@@ -1,0 +1,194 @@
+# Example configuration for proyectEXE
+# This file demonstrates common developer workspace configurations
+
+projects:
+  # Web Development Project
+  web-app:
+    path: "C:/Users/username/Projects/web-app"
+    profiles:
+      # Full development setup with IDE, terminal, and browser
+      dev:
+        tools:
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%"]
+            type: "gui"
+            layout: "right-half"
+            display: "DISPLAY1"
+          
+          - name: "Terminal"
+            path: "cmd.exe"
+            args: ["/k", "cd /d %PROJECT_PATH% && echo Starting development server && npm start"]
+            type: "terminal"
+            layout: "bottom-half"
+            display: "DISPLAY1"
+          
+          - name: "Chrome"
+            path: "C:/Program Files/Google/Chrome/Application/chrome.exe"
+            args: ["http://localhost:3000"]
+            type: "gui"
+            layout: "left-half"
+            display: "DISPLAY1"
+
+      # Frontend-focused profile
+      frontend:
+        tools:
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%/frontend"]
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY1"
+          
+          - name: "Chrome"
+            path: "C:/Program Files/Google/Chrome/Application/chrome.exe"
+            args: ["http://localhost:3000"]
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY2"
+
+  # Backend API Development
+  api-service:
+    path: "C:/Users/username/Projects/api-service"
+    profiles:
+      # Development with IDE, terminal, and API testing tools
+      dev:
+        tools:
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%"]
+            type: "gui"
+            layout: "left-half"
+            display: "DISPLAY1"
+          
+          - name: "Terminal"
+            path: "cmd.exe"
+            args: ["/k", "cd /d %PROJECT_PATH% && echo Starting API server && go run ./cmd/server"]
+            type: "terminal"
+            layout: "bottom-half"
+            display: "DISPLAY1"
+          
+          - name: "Postman"
+            path: "C:/Program Files/Postman/Postman.exe"
+            type: "gui"
+            layout: "right-half"
+            display: "DISPLAY1"
+        
+        env:
+          GO111MODULE: "on"
+          DATABASE_URL: "postgres://localhost:5432/apidb"
+
+      # Database-focused profile
+      database:
+        tools:
+          - name: "DBeaver"
+            path: "C:/Program Files/DBeaver/dbeaver.exe"
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY1"
+          
+          - name: "Terminal"
+            path: "cmd.exe"
+            args: ["/k", "cd /d %PROJECT_PATH%/scripts && echo Database Scripts Ready"]
+            type: "terminal"
+            layout: "bottom-half"
+            display: "DISPLAY1"
+        
+        env:
+          DATABASE_URL: "postgres://localhost:5432/apidb"
+
+  # Game Development Project
+  unity-game:
+    path: "C:/Users/username/Projects/unity-game"
+    profiles:
+      # Game development setup
+      dev:
+        tools:
+          - name: "Unity Hub"
+            path: "C:/Program Files/Unity Hub/Unity Hub.exe"
+            args: ["--projectPath", "%PROJECT_PATH%"]
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY1"
+          
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%/Assets/Scripts"]
+            type: "gui"
+            layout: "right-half"
+            display: "DISPLAY2"
+          
+          - name: "GitHub Desktop"
+            path: "C:/Users/username/AppData/Local/GitHubDesktop/GitHubDesktop.exe"
+            type: "gui"
+            layout: "left-half"
+            display: "DISPLAY2"
+
+      # Asset creation profile
+      art:
+        tools:
+          - name: "Unity Hub"
+            path: "C:/Program Files/Unity Hub/Unity Hub.exe"
+            args: ["--projectPath", "%PROJECT_PATH%"]
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY1"
+          
+          - name: "Photoshop"
+            path: "C:/Program Files/Adobe/Adobe Photoshop 2023/Photoshop.exe"
+            type: "gui"
+            layout: "fullscreen"
+            display: "DISPLAY2"
+
+  # Go CLI Tool Development (similar to launch itself)
+  go-cli-tool:
+    path: "C:/Users/username/Projects/go-cli-tool"
+    profiles:
+      dev:
+        tools:
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%"]
+            type: "gui"
+            layout: "left-half"
+            display: "DISPLAY1"
+          
+          - name: "Terminal Build"
+            path: "cmd.exe"
+            args: ["/k", "cd /d %PROJECT_PATH% && echo Running 'go build -o tool ./cmd/tool'"]
+            type: "terminal"
+            layout: "top-half"
+            display: "DISPLAY2"
+          
+          - name: "Terminal Test"
+            path: "cmd.exe"
+            args: ["/k", "cd /d %PROJECT_PATH% && echo Running 'go test ./...'"]
+            type: "terminal"
+            layout: "bottom-half"
+            display: "DISPLAY2"
+        
+        env:
+          GO111MODULE: "on"
+          GOPATH: "C:/Users/username/go"
+
+      # Documentation profile
+      docs:
+        tools:
+          - name: "VS Code"
+            path: "C:/Program Files/Microsoft VS Code/Code.exe"
+            args: ["--new-window", "%PROJECT_PATH%/docs"]
+            type: "gui"
+            layout: "left-half"
+            display: "DISPLAY1"
+          
+          - name: "Chrome"
+            path: "C:/Program Files/Google/Chrome/Application/chrome.exe"
+            args: ["%PROJECT_PATH%/docs/index.html"]
+            type: "gui"
+            layout: "right-half"
+            display: "DISPLAY1"
+
+# Usage examples:
+# dev open web-app dev      # Opens VS Code, Terminal, and Chrome for web-app project
+# dev open api-service dev  # Opens VS Code, Terminal, and Postman for API development
+# dev open unity-game art   # Opens Unity Hub and Photoshop for game asset creation

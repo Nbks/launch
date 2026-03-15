@@ -1,0 +1,29 @@
+projects:
+  myproject:
+    path: /home/user/code/myproject
+    profiles:
+      dev:
+        tools:
+          - name: vscode
+            path: code
+            args: ["."]
+      full:
+        env:
+          NODE_ENV: development
+        tools:
+          - name: vscode
+            path: code
+            args: ["."]
+            layout: left-half
+            display: "1"
+          - name: terminal
+            path: gnome-terminal
+            args: ["--"]
+            type: terminal
+            layout: right-half
+            display: "1"
+          - name: browser
+            path: firefox
+            args: ["http://localhost:3000"]
+            layout: fullscreen
+            display: "2"
