@@ -8,7 +8,7 @@ A simple CLI tool to manage and open development projects with predefined tool p
 - Define profiles with different tool configurations
 - Launch multiple tools simultaneously
 - Support for GUI, terminal, and background applications
-- Window arrangement support (Linux)
+- Window arrangement support
 - Environment variable support per profile
 
 ## Installation
@@ -94,10 +94,8 @@ projects:
             path: gnome-terminal
             args: ["--"]
             type: terminal
-          - name: browser
-            path: firefox
+          - name: firefox
             args: ["http://localhost:3000"]
-            type: gui
 ```
 
 ### Tool Types
@@ -106,7 +104,7 @@ projects:
 - `terminal` - Terminal application (opens new terminal window)
 - `background` - Background process (runs without visible window)
 
-### Layout (Linux only)
+### Layout
 
 Window positions for multi-monitor setups:
 - `fullscreen`, `top-half`, `bottom-half`
@@ -115,8 +113,10 @@ Window positions for multi-monitor setups:
 ### Display
 
 Specify which display to open on:
-- `display: "1"` - Display 1
-- `display: "2"` - Display 2
+
+**Windows**: Use `DISPLAY0`, `DISPLAY1`, etc. (primary monitor is `DISPLAY0`)
+
+**Linux**: Use the display name from xrandr (e.g., `HDMI-1`, `DP-1`, `eDP-1`)
 
 ## License
 
